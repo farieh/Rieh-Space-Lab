@@ -10,6 +10,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desktop Apps", "Desktop App
 		{088831CE-07AB-4928-9A68-58F5E48EACF7} = {088831CE-07AB-4928-9A68-58F5E48EACF7}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppsServer", "AppsServer\AppsServer.csproj", "{B0810961-1C24-424F-8E06-931A1A4DA7A1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{088831CE-07AB-4928-9A68-58F5E48EACF7} = {088831CE-07AB-4928-9A68-58F5E48EACF7}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +29,10 @@ Global
 		{D2CFB801-7594-4B41-9DBA-6CA6D29B23D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2CFB801-7594-4B41-9DBA-6CA6D29B23D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2CFB801-7594-4B41-9DBA-6CA6D29B23D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0810961-1C24-424F-8E06-931A1A4DA7A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0810961-1C24-424F-8E06-931A1A4DA7A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0810961-1C24-424F-8E06-931A1A4DA7A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0810961-1C24-424F-8E06-931A1A4DA7A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
