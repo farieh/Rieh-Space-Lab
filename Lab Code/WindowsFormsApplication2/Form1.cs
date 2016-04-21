@@ -24,11 +24,11 @@ namespace WindowsFormsApplication2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            /*ServiceReference1.Service1Client client = new ServiceReference1.Service1Client();
+            WcfServiceLibrary7.Service1 client = new WcfServiceLibrary7.Service1();
             string returnString;
 
             returnString = client.GetData(textBox1.Text);
-            label1.Text = returnString;*/
+            label1.Text = returnString;
         }
     }
 }

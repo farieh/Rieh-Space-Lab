@@ -5,21 +5,32 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.ServiceModel;
 using System.ServiceModel.Description;
+using System.Runtime.Serialization;
+
 
 namespace WindowsFormsApplication2
 {
     static class Program
     {
+        
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
-            /*using (ServiceHost host = new ServiceHost(
-                typeof()
-                */
 
+
+            using (ServiceHost host = new ServiceHost(typeof(WcfServiceLibrary7.Service1)))
+            {
+                //ServiceMetadataBehavior smb = new ServiceMetadataBehavior();
+                //smb.HttpGetEnabled = true;
+                //smb.MetadataExporter.PolicyVersion = PolicyVersion.Policy15;
+                //host.Description.Behaviors.Add(smb);
+                
+                host.Open();
+            }
 
 
 

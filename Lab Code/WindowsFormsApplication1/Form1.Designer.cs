@@ -28,42 +28,57 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.checkTalk = new System.Windows.Forms.CheckBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // checkTalk
+            // textBox1
             // 
-            this.checkTalk.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkTalk.FlatAppearance.BorderSize = 0;
-            this.checkTalk.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.checkTalk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkTalk.Image = global::WindowsFormsApplication1.Properties.Resources.Circled_Play_48;
-            this.checkTalk.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.checkTalk.Location = new System.Drawing.Point(12, 12);
-            this.checkTalk.Name = "checkTalk";
-            this.checkTalk.Size = new System.Drawing.Size(58, 85);
-            this.checkTalk.TabIndex = 0;
-            this.checkTalk.Text = "check";
-            this.checkTalk.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.checkTalk.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.checkTalk.UseVisualStyleBackColor = true;
-            this.checkTalk.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.textBox1.Location = new System.Drawing.Point(65, 101);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(62, 65);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "label1";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(65, 145);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(796, 327);
-            this.Controls.Add(this.checkTalk);
+            this.ClientSize = new System.Drawing.Size(271, 210);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBox1);
             this.Name = "Form1";
             this.Text = "Lab Code";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.CheckBox checkTalk;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
     }
 }
 

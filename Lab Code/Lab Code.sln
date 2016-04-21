@@ -9,9 +9,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab Console", "Lab Console\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "New Lab", "New Lab\New Lab.csproj", "{0B2C159F-15D1-437F-AEA9-2628DFE87B68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApplication2", "WindowsFormsApplication2\WindowsFormsApplication2.csproj", "{57EC8A2D-A03B-4908-8B15-37CE32CBF623}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormHost", "WindowsFormsApplication2\WindowsFormHost.csproj", "{57EC8A2D-A03B-4908-8B15-37CE32CBF623}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4DD63158-D18F-4DD9-A286-58092AF3E924} = {4DD63158-D18F-4DD9-A286-58092AF3E924}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfServiceLibrary7", "WcfServiceLibrary7\WcfServiceLibrary7.csproj", "{4DD63158-D18F-4DD9-A286-58092AF3E924}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormClient", "WindowsFormsApplication1\WindowsFormClient.csproj", "{5973ACBC-AF2B-4425-80A7-4A03CFC81AE6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4DD63158-D18F-4DD9-A286-58092AF3E924} = {4DD63158-D18F-4DD9-A286-58092AF3E924}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +47,10 @@ Global
 		{4DD63158-D18F-4DD9-A286-58092AF3E924}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DD63158-D18F-4DD9-A286-58092AF3E924}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DD63158-D18F-4DD9-A286-58092AF3E924}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5973ACBC-AF2B-4425-80A7-4A03CFC81AE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5973ACBC-AF2B-4425-80A7-4A03CFC81AE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5973ACBC-AF2B-4425-80A7-4A03CFC81AE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5973ACBC-AF2B-4425-80A7-4A03CFC81AE6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

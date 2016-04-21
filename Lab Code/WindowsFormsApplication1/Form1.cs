@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
@@ -24,6 +25,15 @@ namespace WindowsFormsApplication1
         {
             CheckBox checkBox = new System.Windows.Forms.CheckBox();
             checkBox.Appearance = System.Windows.Forms.Appearance.Button;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            WcfServiceLibrary7.Service1 client = new WcfServiceLibrary7.Service1();
+            string returnString;
+
+            returnString = client.GetData(textBox1.Text);
+            label1.Text = returnString;
         }
     }
 }
