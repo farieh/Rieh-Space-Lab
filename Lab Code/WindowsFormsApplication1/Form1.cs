@@ -34,6 +34,13 @@ namespace WindowsFormsApplication1
 
             returnString = client.GetData(textBox1.Text);
             label1.Text = returnString;
+            string itemTest = "asadsd";
+            List<string> listTest;
+
+            listTest.Add();
+                
+             
+
         }
     }
 }
