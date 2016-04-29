@@ -7,25 +7,34 @@ using System.Text;
 
 namespace WcfServiceLab
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class ServiceLab : IServiceLab
     {
-        public string GetData(string value)
+        private Engine mainEngine = new Engine();
+
+        public ChatUser ClientConnect(string userName)
         {
-            return string.Format("You entered: {0}", value);
+            return mainEngine.AddNewChatUser(new ChatUser() { UserName = userName });
         }
 
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
+        public List<ChatMessage> GetNewMessages(ChatUser user)
         {
-            if (composite == null)
-            {
-                throw new ArgumentNullException("composite");
-            }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
+            return mainEngine.GetNewMessage(user);
+        }
+
+        public void SendMessages(ChatMessage newMessage)
+        {
+            mainEngine.AddNewMessage(newMessage);
+        }
+
+        public List<ChatUser> GetAllUsers()
+        {
+            return mainEngine.ConnectedUsers;
+        }
+
+        public void RemoveUser(ChatUser user)
+        {
+            mainEngine.RemoveUser(user);
         }
     }
 }

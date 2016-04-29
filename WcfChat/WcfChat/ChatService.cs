@@ -44,10 +44,10 @@ namespace WcfChat
         /// 
         /// </summary>
         /// <returns></returns>
-            public List<ChatUser> GetAllUsers()
-            {
-                return mainEngine.ConectedUsers;
-            }
+        public List<ChatUser> GetAllUsers()
+        {
+            return mainEngine.ConectedUsers;
+        }
 
         public void RemoveUser(ChatUser user)
         {

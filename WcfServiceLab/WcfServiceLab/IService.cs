@@ -12,34 +12,84 @@ namespace WcfServiceLab
     public interface IServiceLab
     {
         [OperationContract]
-        string GetData(string value);
+        ChatUser ClientConnect(string userName);
 
         [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
+        List<ChatMessage> GetNewMessages(ChatUser user);
 
-        // TODO: Add your service operations here
+        [OperationContract]
+        void SendMessages(ChatMessage newMessage);
+
+        [OperationContract]
+        List<ChatUser> GetAllUsers();
+
+        [OperationContract]
+        void RemoveUser(ChatUser user);
+
     }
 
-    // Use a data contract as illustrated in the sample below to add composite types to service operations.
-    // You can add XSD files into the project. After building the project, you can directly use the data types defined there, with the namespace "WcfServiceLab.ContractType".
     [DataContract]
-    public class CompositeType
+    public class ChatUser
     {
-        bool boolValue = true;
-        string stringValue = "Hello ";
-
+        private string userName, ipAddress, hostName;
         [DataMember]
-        public bool BoolValue
+        public string UserName
         {
-            get { return boolValue; }
-            set { boolValue = value; }
+            get { return userName; }
+            set { userName = value; }
         }
 
         [DataMember]
-        public string StringValue
+        public string IpAddress
         {
-            get { return stringValue; }
-            set { stringValue = value; }
+            get { return ipAddress; }
+            set { ipAddress = value; }
+        }
+
+        [DataMember]
+        public string HostName
+        {
+            get { return hostName; }
+            set { hostName = value; }
+        }
+
+        public override string ToString()
+        {
+            return base.ToString();
         }
     }
+
+    
+
+    [DataContract]
+    public class ChatMessage
+    {
+        private ChatUser user;
+        [DataMember]
+        public ChatUser User
+        {
+            get { return user; }
+            set { user = value; }
+        }
+
+        private string message;
+        [DataMember]
+        public string Message
+        {
+            get { return message; }
+            set { message = value; }
+        }
+
+        private DateTime date;
+        [DataMember]
+        public DateTime Date
+        {
+            get { return date; }
+            set { date = value; }
+        }
+
+    }
+
+
+
 }

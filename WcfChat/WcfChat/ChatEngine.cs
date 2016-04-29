@@ -84,6 +84,4 @@ namespace WcfChat
             this.ConectedUsers.RemoveAll(u=>u.UserName==user.UserName);
         }
     }
-
-
 }

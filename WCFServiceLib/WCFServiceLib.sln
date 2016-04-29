@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFServiceLib", "WCFServiceLib\WCFServiceLib.csproj", "{088831CE-07AB-4928-9A68-58F5E48EACF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desktop Apps", "Desktop Apps\Desktop Apps.csproj", "{D2CFB801-7594-4B41-9DBA-6CA6D29B23D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopApps", "Desktop Apps\DesktopApps.csproj", "{D2CFB801-7594-4B41-9DBA-6CA6D29B23D8}"
 	ProjectSection(ProjectDependencies) = postProject
 		{088831CE-07AB-4928-9A68-58F5E48EACF7} = {088831CE-07AB-4928-9A68-58F5E48EACF7}
 	EndProjectSection
