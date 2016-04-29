@@ -1,0 +1,9 @@
+BadCommand
+textwrap
+DistributionNotFound
+CommandError
+InstallationError
+BestVersionAlreadyInstalled
+PipError
+NoSSLError
+UninstallationError
