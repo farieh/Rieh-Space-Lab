@@ -139,10 +139,10 @@ namespace LabSpace
         {
 
 
-            double persentase;
-            int markMath;
-            int markLang;
-            int markSci;
+            //double persentase;
+            //int markMath;
+            //int markLang;
+            //int markSci;
             //Student stJhon = new Student();
             //Siswa siswaBaru = new Siswa();
             //Siswa siswaLama = new Siswa();

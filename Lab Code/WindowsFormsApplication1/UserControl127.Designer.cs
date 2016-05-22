@@ -36,7 +36,7 @@
             // 
             this.labelHostName.AutoSize = true;
             this.labelHostName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelHostName.Location = new System.Drawing.Point(15, 11);
+            this.labelHostName.Location = new System.Drawing.Point(4, 11);
             this.labelHostName.Name = "labelHostName";
             this.labelHostName.Size = new System.Drawing.Size(60, 13);
             this.labelHostName.TabIndex = 0;
@@ -45,7 +45,7 @@
             // labelUserName
             // 
             this.labelUserName.AutoSize = true;
-            this.labelUserName.Location = new System.Drawing.Point(15, 33);
+            this.labelUserName.Location = new System.Drawing.Point(4, 33);
             this.labelUserName.Name = "labelUserName";
             this.labelUserName.Size = new System.Drawing.Size(35, 13);
             this.labelUserName.TabIndex = 1;

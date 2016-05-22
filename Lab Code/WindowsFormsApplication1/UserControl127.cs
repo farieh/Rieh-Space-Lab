@@ -25,8 +25,11 @@ namespace LabCodeLearn
 
         private void userControl127_OnLoad(object sender, EventArgs e)
         {
-                        
+            //var senderAsControl = sender as Control;
+            var name = this.TabIndex;
+
             labelHostName.Text = string.Format("Computer {0}",indeks);
+            labelUserName.Text = string.Format("{0}",name);
             
         }
         

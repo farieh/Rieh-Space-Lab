@@ -17,7 +17,7 @@ namespace WindowsFormsApplication1
     public partial class Form1 : Form
     {
 
-        UserControl127 userLocal = new UserControl127();
+        
 
         public Form1()
         {
@@ -54,17 +54,47 @@ namespace WindowsFormsApplication1
         }
 
         int i;
-        private void FlowLayoutPanel_DoubleClick (object sender, EventArgs e)
+        
+        public void FlowLayoutPanel_DoubleClick (object sender, EventArgs e)
         {
             i++;
             
-            LabCodeLearn.UserControl127 userCtrl127 = new LabCodeLearn.UserControl127();
+
+            UserControl127 userCtrl127 = new UserControl127();
             userCtrl127.indeks = i;
             flowLayoutPanel127.Controls.Add(userCtrl127);
             
             
             
+        }
+
+        private void ChangeAllColorStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangeAllColor(flowLayoutPanel127);
+        }
+
+        private void ChangeAllColor(Control c)
+        {
+            c.BackColor = Color.White;
+            foreach(Control ctrl in c.Controls)
+            {
+                ChangeAllColor(ctrl);
+            }
+        }
+
+        private void showNameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             
+        }
+
+        private void betterListView_click(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                contextMenuStrip1.Show(Cursor.Position);
+                //MessageBox.Show(string.Format("{0}",betterListView1.FocusedItem));
+            }
+
         }
     }
 }

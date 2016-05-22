@@ -148,12 +148,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WcfServiceLibrary7\WcfServiceLibrary7.csproj">
-      <Project>{4dd63158-d18f-4dd9-a286-58092af3e924}</Project>
-      <Name>WcfServiceLibrary7</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
