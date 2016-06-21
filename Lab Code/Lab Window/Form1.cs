@@ -8,16 +8,53 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using System.ServiceModel;
+using System.Media;
+using Microsoft.DirectX;
+using Microsoft.DirectX.DirectSound;
+using System.Net;
+using System.Net.Sockets;
+using System.ServiceModel.Discovery;
+using System.ServiceModel.Description;
+using System.ServiceModel.Channels;
+using System.ServiceModel.Dispatcher;
+using System.Globalization;
+using System.Diagnostics;
+using Lab_Window;
+
+
 
 namespace Lab_Window
 {
+    
     public partial class Form1 : Form
     {
+        public ChannelFactory<IServiceBaru> remoteFactory;
+        public IServiceBaru remoteProxy;
         public string ID_Form;
         List<string> nama = new List<string>();
         Dictionary<string, int> mydic = new Dictionary<string, int>();
         public string itemSelected;
+        
 
+        
+
+        public void EndPointList()
+        {
+
+            /*
+            var address = findResult.Endpoints.First(ep => ep.Address.Uri.Scheme == "tcp.net").Address;
+
+            rtbMain.AppendText(address.ToString());
+            var factory = new ChannelFactory<IServiceBaru>(new NetTcpBinding(), address);
+            var proxy = factory.CreateChannel();
+
+
+            rtbMain.AppendText(proxy.SendData("Baru Send aja"));
+
+            ((ICommunicationObject)proxy).Close();
+            */
+        }
 
         public Form1()
         {
@@ -28,16 +65,16 @@ namespace Lab_Window
 
         private void add_Nama(string nm1)
         {
-            
             nama.Add(nm1);
         }
 
-
-        
-
-        private void timer1_Tick(object sender, EventArgs e)
+        private void test_Listener ()
         {
             
+        }
+        
+        private void timer1_Tick(object sender, EventArgs e)
+        {
             
         }
 
@@ -64,12 +101,12 @@ namespace Lab_Window
 
         public bool isFormFound;
 
-        int nomor;
+        //int nomor;
         private Baru_Form baru;
         private void lbNama_MouseDoubleClick(object sender, MouseEventArgs e)
         {
 
-            
+            /*
             itemSelected = lbNama.SelectedItem.ToString();
             Form fc = Application.OpenForms["Baru_Form"];
             
@@ -103,49 +140,18 @@ namespace Lab_Window
                     {
                         baru = new Baru_Form();
                         baru.Start_Form(itemSelected);
-                        isFormFound = false;
                     }
 
 
                 }
-                
+            }*/
 
-
-                //Application.OpenForms[index].Show();
-                //nomor++;
-
-
-                /*
-                Baru_Form baru = new Baru_Form();
-
-                baru.Start_Form(text);
-                nomor++;
-                */
-
-                //if(baru != null)
-                //{
-
-                //}
-
-                //Baru_Form baru = new Baru_Form();
-                //baru.Start_Form(lbNama.SelectedItem.ToString());
-
-            }
         }
         private void bNama_Click(object sender, EventArgs e)
         {
+            clientDiscovery();
 
             //Open All form active Form_Baru
-
-            for (int i = Application.OpenForms.Count - 1; i >= 0; i += -1)
-            {
-                if (!object.ReferenceEquals(Application.OpenForms[i], this))
-                {
-
-                    var br = Application.OpenForms[i];
-                    br.Show();
-                }
-            }
 
 
             //add_Nama(tbNama.Text);
@@ -192,14 +198,163 @@ namespace Lab_Window
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //Baru_Form br = new Baru_Form();
-            //br.Show();
+            remoteFactory = new ChannelFactory<IServiceBaru>("WcfConfig");
+            remoteProxy = remoteFactory.CreateChannel();
 
-            foreach (Form br in Application.OpenForms.Cast<Form>())
+            MessageBox.Show(remoteProxy.SendData(tbNama.Text));
+
+        }
+
+        private void tbNama_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private IWcfPingTest channel;
+        public Uri WcfTestClient_DiscoverChannel()
+        {
+            var dc = new DiscoveryClient(new UdpDiscoveryEndpoint());
+            FindCriteria fc = new FindCriteria(typeof(IWcfPingTest));
+            fc.Duration = TimeSpan.FromSeconds(5);
+            FindResponse fr = dc.Find(fc);
+            foreach (EndpointDiscoveryMetadata edm in fr.Endpoints)
             {
-                MessageBox.Show(br.Name);
+                Console.WriteLine("uri found = " + edm.Address.Uri.ToString());
+            }
+            // here is the really nasty part
+            // i am just returning the first channel, but it may not work.
+            // you have to do some logic to decide which uri to use from the discovered uris
+            // for example, you may discover "127.0.0.1", but that one is obviously useless.
+            // also, catch exceptions when no endpoints are found and try again.
+            return fr.Endpoints[0].Address.Uri;
+        }
+
+        public void WcfTestClient_SetupChannel()
+        {
+            var binding = new BasicHttpBinding(BasicHttpSecurityMode.None);
+            var factory = new ChannelFactory<IWcfPingTest>(binding);
+            var uri = WcfTestClient_DiscoverChannel();
+            Console.WriteLine("creating channel to " + uri.ToString());
+            EndpointAddress ea = new EndpointAddress(uri);
+            channel = factory.CreateChannel(ea);
+            Console.WriteLine("channel created");
+            //Console.WriteLine("pinging host");
+            //string result = channel.Ping();
+            //Console.WriteLine("ping result = " + result);
+        }
+        public void WcfTestClient_Ping()
+        {
+            Console.WriteLine("pinging host");
+            string result = channel.Ping();
+            Console.WriteLine("ping result = " + result);
+        }
+
+
+        public class WebServiceEndpointBehavior : IEndpointBehavior
+        {
+            public void Validate(ServiceEndpoint endpoint)
+            {
 
             }
+
+            public void AddBindingParameters(ServiceEndpoint endpoint, BindingParameterCollection bindingParameters)
+            {
+
+            }
+
+            public void ApplyDispatchBehavior(ServiceEndpoint endpoint, EndpointDispatcher endpointDispatcher)
+            {
+
+            }
+
+            public void ApplyClientBehavior(ServiceEndpoint endpoint, ClientRuntime clientRuntime)
+            {
+                Uri serviceAddress = new Uri("http://sometempuri.org ");   //dynamically load URL here
+                endpoint.Address = new EndpointAddress(serviceAddress);
+            }
+        }
+
+        public void Testing()
+        {
+
+            
+
+            remoteFactory = new ChannelFactory<IServiceBaru>("WcfConfig");
+            remoteProxy = remoteFactory.CreateChannel();
+            
+
+            string str = remoteProxy.SendData("asdasdasd");
+
+
+            MessageBox.Show(str);
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            
+            
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
+        public void clientDiscovery()
+        {
+            string hostName = Dns.GetHostName();
+            User userclient = new User();
+            userclient.Name = tbNama.Text;
+            foreach (var ipadd in Dns.GetHostAddresses(hostName))
+            {
+                if(ipadd.AddressFamily.ToString() == "InterNetwork")
+                {
+                    userclient.IpAddress = ipadd.MapToIPv4();
+                    
+                }
+            }    
+            
+
+            var discoveryClient = new DiscoveryClient(new UdpDiscoveryEndpoint());
+            var findCriteria = FindCriteria.CreateMetadataExchangeEndpointCriteria(typeof(IServiceBaru));
+            findCriteria.MaxResults = 1;
+
+            Debug.Assert(findCriteria.Scopes != null, "findCriteria.Scopes != null");
+            findCriteria.Scopes.Add(new Uri("ldap:///ou=people,o=rashim"));
+            var findResponse = discoveryClient.Find(findCriteria);
+
+            if (findResponse != null)
+            {
+                if (findResponse.Endpoints != null)
+                {
+                    if (findResponse.Endpoints.Count > 0)
+                    {
+                        var endpoints = MetadataResolver.Resolve(typeof(IServiceBaru),
+                                                                findResponse.Endpoints[0].Address);
+                        var factory = new ChannelFactory<IServiceBaru>(endpoints[0].Binding, endpoints[0].Address);
+                        var channel = factory.CreateChannel();
+
+                        var iamclient = channel.WhoAmI(userclient);
+
+                        MessageBox.Show(iamclient.Name);
+                        MessageBox.Show(iamclient.IpAddress.ToString());
+                        
+
+
+                    }
+                }
+            }
+
         }
     }
 }

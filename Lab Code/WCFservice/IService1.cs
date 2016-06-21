@@ -4,9 +4,51 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.IO;
+using System.Net;
+
 
 namespace Lab_Window
 {
+    [ServiceContract]
+    public interface IWcfPingTest
+    {
+        [OperationContract]
+        string Ping();
+    }
+
+
+    [ServiceContract]
+    public interface IStreaming
+    {
+        [OperationContract]
+        Stream GetStream(string data);
+        [OperationContract]
+        bool UploadStream(Stream stream);
+        [OperationContract]
+        Stream EchoStream(Stream stream);
+        [OperationContract]
+        Stream GetReversedStream();
+
+    }
+
+
+    [ServiceContract]
+    public interface IServiceBaru
+    {
+        [OperationContract]
+        string GetData();
+
+        [OperationContract]
+        string SendData(string value);
+
+        [OperationContract]
+        byte GetByte(byte value);
+
+        [OperationContract]
+        User WhoAmI(User value);
+    }
+    
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
     [ServiceContract]
     public interface IService1
@@ -57,6 +99,15 @@ namespace Lab_Window
             set { name = value; }
 
         }
+
+        IPAddress ipAddress;
+        [DataMember]
+        public IPAddress IpAddress
+        {
+            get { return ipAddress; }
+            set { ipAddress = value; }
+        }
     }
+
 
 }
