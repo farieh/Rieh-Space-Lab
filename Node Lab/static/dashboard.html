@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Hello World!</title>
+</head>
+
+<body>
+  <div class="kepala"></div>
+  <div></div>
+
+  <script>
+        
+    
+    let main = require('../lib/dashboard');
+    //var index = require('../index');
+    jQuery = require('jquery');
+    
+    jQuery('.kepala').append(main.header);
+    jQuery.material.init();
+    
+</script>
+
+</body>
+
+</html>
