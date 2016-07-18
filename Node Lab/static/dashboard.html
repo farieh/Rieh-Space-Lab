@@ -3,24 +3,59 @@
 
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="./node_module/bootstrap.css">
+  <link rel="stylesheet" href="./dashboard.css">
+  <script type="text/javascript" src="./dashboard.js"></script>
   <title>Hello World!</title>
 </head>
 
 <body>
-  <div class="kepala"></div>
+  <div name="ToolbarWindowControls" class="toolbar-window-controls">
+    <button id="close-button" class="close">Close</button>
+  </div>
+  <div class="kepala">
+  </div>
   <div></div>
+  <h1 class="h1">Halo </h1>
+  <button onclick="win2Open()">Open New</button>
+  <button id="information-dialog">Confirm me</button>
+  <button id="alertYo">Alert me</button>
 
   <script>
-        
+    document.getElementById('alertYo').addEventListener("click", function (e) {
+      sample('');
+    });
+
+    const {remote} = require('electron');
+    const {BrowserWindow} = require('electron').remote;
     
-    let main = require('../lib/dashboard');
-    //var index = require('../index');
-    jQuery = require('jquery');
+
+    const ipc = require('electron').ipcRenderer
+
+    const informationBtn = document.getElementById('information-dialog')
+
+    informationBtn.addEventListener('click', function (event) {
+      ipc.send('open-information-dialog')
+    })
+
+    ipc.on('information-dialog-selection', function (event, index) {
+      let message = 'You selected '
+      if (index === 0) message += 'yes.'
+      else message += 'no.'
+      document.getElementById('info-selection').innerHTML = message
+    })
+
+    document.getElementById("close-button").addEventListener("click", function (e) {
+         var window = remote.getCurrentWindow();
+         window.close();
+    });
+
     
-    jQuery('.kepala').append(main.header);
-    jQuery.material.init();
     
+
+
 </script>
+
 
 </body>
 

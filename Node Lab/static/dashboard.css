@@ -1,0 +1,10 @@
+.h1{
+    color: forestgreen;
+}
+.kepala{
+    color: aqua;
+}
+
+.yourwindowclass .popupContent .v-window-wrap .v-window-maximizebox{
+height: 0px; 
+}
