@@ -1,3 +1,1 @@
-function sample(e) {
-    alert(e);
-}
+import {Halo} from '../lib/dashboard'

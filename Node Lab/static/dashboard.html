@@ -3,15 +3,20 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="./node_module/bootstrap.css">
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="./dashboard.css">
   <script type="text/javascript" src="./dashboard.js"></script>
   <title>Hello World!</title>
 </head>
 
 <body>
-  <div name="ToolbarWindowControls" class="toolbar-window-controls">
-    <button id="close-button" class="close">Close</button>
+  <div id="title-bar" class="title-bar">
+    <div id="title">Ini Hidup</div>
+    <div id="title-bar-btns">
+      <button id="min-btn">+</button>
+      <button id="max-btn">-</span></button>
+      <button id="close-btn">x</button>
+    </div>
   </div>
   <div class="kepala">
   </div>
@@ -22,15 +27,9 @@
   <button id="alertYo">Alert me</button>
 
   <script>
-    document.getElementById('alertYo').addEventListener("click", function (e) {
-      sample('');
-    });
 
     const {remote} = require('electron');
     const {BrowserWindow} = require('electron').remote;
-    
-
-    const ipc = require('electron').ipcRenderer
 
     const informationBtn = document.getElementById('information-dialog')
 
@@ -45,13 +44,16 @@
       document.getElementById('info-selection').innerHTML = message
     })
 
-    document.getElementById("close-button").addEventListener("click", function (e) {
+    document.getElementById("close-btn").addEventListener("click", function (e) {
          var window = remote.getCurrentWindow();
          window.close();
     });
 
     
-    
+    document.getElementById('alertYo').addEventListener("click", function (e) {
+      sample('');
+    });
+
 
 
 </script>

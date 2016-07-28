@@ -10,3 +10,18 @@ exports.header = function () {
 
 }
 
+var varluar = "var luar";
+let letluar = "let luar";
+
+function Halo() {
+  var xyz;
+
+  alert('haha');
+  alert(letluar);
+
+}
+
+
+exports.halo function (x) {
+  return 'alert('+x+')'
+}
